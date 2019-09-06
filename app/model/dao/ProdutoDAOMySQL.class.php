@@ -2,12 +2,12 @@
 
     namespace app\model\dao;
 
-    use app\model\dto\Produto;
+    use app\model\dto\Launch;
     use app\conexao\Conexao;
-    use app\model\interfaces\IPersistenciaProduto;
+    use app\model\interfaces\IGenericCrud;
     use PDO;
 
-    class ProdutoDAOMySQL implements IPersistenciaProduto{
+    class LaunchDAOMySQL implements IGenericCrud{
 
         const NOME_TABELA = "PRODUTO";
 
