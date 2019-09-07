@@ -22,6 +22,7 @@ class ComposerStaticInite8ad25085717a341064cec606b7a08c2
         'a' => 
         array (
             'app\\' => 4,
+            'api\\' => 4,
         ),
         'W' => 
         array (
@@ -56,6 +57,10 @@ class ComposerStaticInite8ad25085717a341064cec606b7a08c2
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+        ),
+        'api\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -633,13 +638,23 @@ class ComposerStaticInite8ad25085717a341064cec606b7a08c2
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
+        'api\\Conversor' => __DIR__ . '/../..' . '/api/Conversor.php',
         'app\\conexao\\Conexao' => __DIR__ . '/../..' . '/app/conexao/Conexao.class.php',
         'app\\controller\\HomeController' => __DIR__ . '/../..' . '/app/controller/HomeController.class.php',
+        'app\\controller\\LaunchController' => __DIR__ . '/../..' . '/app/controller/LaunchController.class.php',
+        'app\\controller\\MissionController' => __DIR__ . '/../..' . '/app/controller/MissionController.class.php',
         'app\\controller\\ProdutoController' => __DIR__ . '/../..' . '/app/controller/ProdutoController.class.php',
-        'app\\model\\bo\\ProdutoBO' => __DIR__ . '/../..' . '/app/model/bo/ProdutoBO.class.php',
-        'app\\model\\dao\\ProdutoDAOMySQL' => __DIR__ . '/../..' . '/app/model/dao/ProdutoDAOMySQL.class.php',
-        'app\\model\\dto\\Produto' => __DIR__ . '/../..' . '/app/model/dto/Produto.class.php',
-        'app\\model\\interfaces\\IPersistenciaProduto' => __DIR__ . '/../..' . '/app/model/interfaces/IPersistenciaProduto.php',
+        'app\\controller\\RocketController' => __DIR__ . '/../..' . '/app/controller/RocketController.class.php',
+        'app\\model\\bo\\LaunchBO' => __DIR__ . '/../..' . '/app/model/bo/LaunchBO.class.php',
+        'app\\model\\bo\\MissionBO' => __DIR__ . '/../..' . '/app/model/bo/MissionBO.class.php',
+        'app\\model\\bo\\RocketBO' => __DIR__ . '/../..' . '/app/model/bo/RocketBO.class.php',
+        'app\\model\\dao\\LaunchDAOMySQL' => __DIR__ . '/../..' . '/app/model/dao/LaunchDAOMySQL.class.php',
+        'app\\model\\dao\\MissionDAOMySQL' => __DIR__ . '/../..' . '/app/model/dao/MissionDAOMySQL.class.php',
+        'app\\model\\dao\\RocketDAOMySQL' => __DIR__ . '/../..' . '/app/model/dao/RocketDAOMySQL.class.php',
+        'app\\model\\dto\\Launch' => __DIR__ . '/../..' . '/app/model/dto/Launch.class.php',
+        'app\\model\\dto\\Mission' => __DIR__ . '/../..' . '/app/model/dto/Mission.class.php',
+        'app\\model\\dto\\Rocket' => __DIR__ . '/../..' . '/app/model/dto/Rocket.class.php',
+        'app\\model\\interfaces\\IGenericDB\\IGenericDB' => __DIR__ . '/../..' . '/app/model/interfaces/IGenericDB.php',
         'core\\AbsController' => __DIR__ . '/../..' . '/core/AbsController.class.php',
         'core\\ControllerUtil' => __DIR__ . '/../..' . '/core/ControllerUtil.class.php',
         'core\\Redirecionador' => __DIR__ . '/../..' . '/core/Redirecionador.class.php',
