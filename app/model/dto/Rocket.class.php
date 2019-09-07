@@ -14,7 +14,6 @@
         private $mass;
         private $image;
 
-
         public function getId()
         {
                 return $this->id;
@@ -35,6 +34,18 @@
         public function setRocketId($rocketId)
         {
                 $this->rocketId = $rocketId;
+
+                return $this;
+        }
+
+        public function getName()
+        {
+                return $this->name;
+        }
+
+        public function setName($name)
+        {
+                $this->name = $name;
 
                 return $this;
         }
@@ -109,6 +120,19 @@
                 $this->image = $image;
 
                 return $this;
+        }
+
+        public function __toString() {
+                return "### Rocket <<<"
+                    . " ID = " . $this->getId()
+                    . " | RocketID = " . $this->getRocketID()
+                    . " | Name = " . $this->getName()
+                    . " | Description = " . $this->getDescription()
+                    . " | FirtsFlight = " . $this->getFirstFlight()->format('d-m-Y')
+                    . " | Height = " . $this->getHeight()
+                    . " | Diameter = " . $this->getDiameter()
+                    . " | Mass = " . $this->getMass()
+                    . " | Image = " . $this->getImage() . " >>> ";
         }
     }
 

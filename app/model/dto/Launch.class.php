@@ -11,7 +11,6 @@
         private $mission;
         private $description;
         private $image;
-
     
         public function getId()
         {
@@ -96,6 +95,17 @@
                 $this->image = $image;
 
                 return $this;
+        }
+
+        public function __toString() {
+                return "### Launch <<<"
+                    . " ID = " . $this->getId()
+                    . " | FlightNumber = " . $this->getFlightNumber()
+                    . " | Date = " . $this->getDate()->format('d-m-Y')
+                    . " | ObjectRocket = " . $this->getRocket()
+                    . " | ObjectMission = " . $this->getMission()
+                    . " | Description = " . $this->getDescription()
+                    . " | Image = " . $this->getImage() . " >>> ";
         }
     }
 

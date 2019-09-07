@@ -56,6 +56,14 @@
 
                 return $this;
         }
+
+        public function __toString() {
+                return "### Mission <<<"
+                    . " ID = " . $this->getId()
+                    . " | MissionID = " . $this->getMissionID()
+                    . " | Name = " . $this->getName()
+                    . " | Description = " . $this->getDescription() . " >>> ";
+        }
     }
 
 
