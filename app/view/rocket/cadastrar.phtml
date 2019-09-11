@@ -1,5 +1,29 @@
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<a href="" onclick="return chamarPhpAjax();">Teste onclick</a>
+
+<script>
+function chamarPhpAjax() {
+    id = document.getElementById('idToFind').value;
+    console.log(id);
+   $.ajax({
+      method:'GET',
+      url:'/rocket/' + id + '/buscar',
+      complete: function (response) {
+         document.getElementById('description').value = response.responseText
+         alert(response.responseText);
+      },
+      error: function () {
+          alert('Erro');
+      }
+  });  
+
+  return false;
+}
+</script>
+
 <?php
 // MENSAGEM DE CADASTRADO
 if (isset($_GET['cadastrado'])) {
@@ -28,7 +52,7 @@ if (isset($_GET['cadastrado'])) {
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="">Rocket ID to find:</label>
-            <input type="number" id="idToFind" class="form-control">
+            <input type="text" id="idToFind" class="form-control">
         </div>
         <div class="form-group col-md-2">
             <button type="button" class="btn btn-sm btn-success" style="margin-top: 35px;" onClick="buscaDadosAluno();"><i class='fa fa-check-circle'></i> Find Rocket</button>
