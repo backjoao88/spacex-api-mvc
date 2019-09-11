@@ -24,6 +24,17 @@ if (isset($_GET['cadastrado'])) {
 <br><h1>Rocket</h1><br>
 
 <form action="/rocket/inserir" method="POST">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="">Rocket ID to find:</label>
+            <input type="number" id="idToFind" class="form-control">
+        </div>
+        <div class="form-group col-md-2">
+            <button type="button" class="btn btn-sm btn-success" style="margin-top: 35px;" onClick="buscaDadosAluno();"><i class='fa fa-check-circle'></i> Find Rocket</button>
+        </div>
+    </div><br>
+
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="rocketID">Rocket ID</label>
@@ -64,4 +75,4 @@ if (isset($_GET['cadastrado'])) {
     <button type="submit" class="btn btn-sm btn-primary float-right"><i class='fa fa-plus-circle'></i> Adicionar</button>
 </form>
 
-</div>
+</div><br><br><br><br>
