@@ -1,0 +1,81 @@
+
+
+<?php
+// MENSAGEM DE CADASTRADO
+if (isset($_GET['cadastrado'])) {
+    $status = "danger";
+    $mensagem = "Falha ao inserir registro";
+    if ($_GET['cadastrado']) {
+        $status = "success";
+        $mensagem = "Registro inserido com sucesso";
+    }
+    ?>
+    <script type="text/javascript">
+        $('#att_Modal').modal('hide')
+    </script>  
+    <div class="alert alert-dismissible alert-<?= $status ?>">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <?= $mensagem ?>
+    </div>
+<?php } ?>
+
+
+
+
+<!-- 
+ID
+ROCKET_ID
+NAME
+DESCRIPTION
+FIRST_FLIGHT
+HEIGHT
+DIAMETER
+MASS
+IMAGE
+-->
+
+<div class="container">
+<br><h1>Rocket</h1><br>
+
+<form action="/rocket/inserir" method="POST">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="rocketID">Rocket ID</label>
+            <input type="text" class="form-control" id="rocketID" name="rocketID" placeholder="Rocket ID" readonly>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea style="resize:none" class="form-control" rows="3" id="description" name="description" placeholder="Description" readonly></textarea>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="firstFlight">First Flight</label>
+            <input type="date" class="form-control" id="firstFlight" name="firstFlight" placeholder="First Flight" readonly>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="height">Height</label>
+            <input type="number" class="form-control" id="height" name="height" placeholder="Height" readonly>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="diameter">Diameter</label>
+            <input type="number" class="form-control" id="diameter" name="diameter" placeholder="Diameter" readonly>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="mass">Mass</label>
+            <input type="number" class="form-control" id="mass" name="mass" placeholder="Mass" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input type="text" class="form-control" id="image" name="image" placeholder="Image" readonly>
+    </div>
+
+    <button type="submit" class="btn btn-sm btn-primary"><i class='fa fa-plus-circle'></i> Adicionar</button>
+</form>
+
+</div>

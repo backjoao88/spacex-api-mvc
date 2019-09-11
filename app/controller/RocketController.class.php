@@ -11,6 +11,10 @@
             $rocket = Conversor::getConteudoRocket($id);
             echo $rocket;
         }
+
+        public function cadastrar() {
+            $this->requisitarView('rocket/cadastrar', 'baseHtml');
+        }
     }
 
 ?>
