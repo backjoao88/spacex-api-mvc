@@ -40,7 +40,21 @@
         }
 
         public function delete($mission){
+            try{
+                $pdo = Conexao::conectar();
+                $sql = 'DELETE FROM ' . self::NOME_TABELA . ' WHERE id = :id';
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':id', $id);
         
+                $id = $mission->getMissionId();
+                
+                return $stmt->execute();
+            }catch (PDOException $e){
+                echo 'Erro ao Excluir -> ' . $e->getMessage();
+                return false;
+            }finally{
+                $pdo = null;
+            }
         }
         
         public function find($mission){
