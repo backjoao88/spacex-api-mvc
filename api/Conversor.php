@@ -66,7 +66,7 @@ class Conversor{
             ->setMass($data->mass->kg)
             ->setImage($data->flickr_images[0]);
         
-        return $rocket;
+        return json_encode($rocket, JSON_PRETTY_PRINT);
     }
 
     /**

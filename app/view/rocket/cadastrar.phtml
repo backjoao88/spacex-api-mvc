@@ -5,13 +5,20 @@
 <script>
 function findRocket() {
     id = document.getElementById('idToFind').value
-    console.log(id)
     $.ajax({
         url:'/rocket/' + id + '/buscar',
         complete: function (response) {
             result = response.responseText
-            document.getElementById('description').value = result
-            alert(response.responseText)
+            result = JSON.parse(result)
+
+            document.getElementById('rocketID').value = result['rocketid']
+            document.getElementById('name').value = result['name']
+            document.getElementById('description').value = result['description']
+            document.getElementById('firstFlight').value = result['firstflight']
+            document.getElementById('height').value = result['height']
+            document.getElementById('diameter').value = result['diameter']
+            document.getElementById('mass').value = result['mass']
+            document.getElementById('image').value = result['image']
         },
         error: function () {
             alert('Erro')
@@ -77,15 +84,15 @@ if (isset($_GET['cadastrado'])) {
             <input type="date" class="form-control" id="firstFlight" name="firstFlight" placeholder="First Flight" readonly>
         </div>
         <div class="form-group col-md-3">
-            <label for="height">Height</label>
+            <label for="height">Height (m)</label>
             <input type="number" class="form-control" id="height" name="height" placeholder="Height" readonly>
         </div>
         <div class="form-group col-md-3">
-            <label for="diameter">Diameter</label>
+            <label for="diameter">Diameter (m)</label>
             <input type="number" class="form-control" id="diameter" name="diameter" placeholder="Diameter" readonly>
         </div>
         <div class="form-group col-md-3">
-            <label for="mass">Mass</label>
+            <label for="mass">Mass (kg)</label>
             <input type="number" class="form-control" id="mass" name="mass" placeholder="Mass" readonly>
         </div>
     </div>
