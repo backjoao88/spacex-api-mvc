@@ -20,17 +20,16 @@
         }
 
         public function inserir($request) {
-            if (!isset($request->post->missionID)) {
-                Redirecionador::paraARota('/');
-            }
-
-            $mission = (new Mission())
-                ->setMissionId($request->post->missionID)
-                ->setName($request->post->name)
-                ->setDescription($request->post->description);
+            $result = 0;
+            if (isset($request->post->missionID) && $request->post->missionID != "") {
+                $mission = (new Mission())
+                    ->setMissionId($request->post->missionID)
+                    ->setName($request->post->name)
+                    ->setDescription($request->post->description);
             
-            $missionDAOMySQL = new MissionDAOMySQL();
-            $result = $missionDAOMySQL->insert($mission);
+                $missionDAOMySQL = new MissionDAOMySQL();
+                $result = $missionDAOMySQL->insert($mission);
+            }
             Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
         }
     }

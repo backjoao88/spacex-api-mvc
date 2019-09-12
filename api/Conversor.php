@@ -77,15 +77,13 @@ class Conversor{
         if (!$data) {
             return null;
         }
-        echo 'data';
-        echo var_dump($data);
 
         $mission = (new Mission())
             ->setMissionId($data->mission_id)
             ->setName($data->mission_name)
             ->setDescription($data->description);
         
-        return $mission;
+        return json_encode($mission, JSON_PRETTY_PRINT);
     }
 
     /**
@@ -105,6 +103,6 @@ class Conversor{
             ->setDescription($data->details)
             ->setImage($data->links->mission_patch_small);
         
-        return $launch;
+        return json_encode($launch, JSON_PRETTY_PRINT);
     }
 }

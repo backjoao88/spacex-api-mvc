@@ -9,7 +9,7 @@
 
     class MissionDAOMySQL implements IGenericDB{
 
-        const TABLE_NAME = "MISSION";
+        const NOME_TABELA = "MISSION";
 
         public function insert($mission){
             try {
@@ -23,7 +23,7 @@
                 $stmt->bindParam(':name', $name, PDO::PARAM_STR);
                 $stmt->bindParam(':description', $description, PDO::PARAM_STR);
                 
-                $missionId       = $mission->getMissionId();
+                $missionId      = $mission->getMissionId();
                 $name           = $mission->getName();
                 $description    = $mission->getDescription();
 

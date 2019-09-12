@@ -9,6 +9,11 @@ function findRocket() {
         url:'/rocket/' + id + '/buscar',
         complete: function (response) {
             result = response.responseText
+            if (!result) {
+                alert('Invalid ID!')
+                document.getElementById('idToFind').value = ''
+                return
+            }
             result = JSON.parse(result)
 
             document.getElementById('rocketID').value = result['rocketid']
