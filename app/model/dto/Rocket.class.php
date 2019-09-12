@@ -131,7 +131,7 @@
                         'rocketid' => $this->getRocketID(),
                         'name' => $this->getName(),
                         'description' => $this->getDescription(),
-                        'firstflight' => $this->getFirstFlight()->format('Y-m-d'),
+                        'firstflight' => $this->getFirstFlight() != null ? $this->getFirstFlight()->format('Y-m-d') : null,
                         'height' => $this->getHeight(),
                         'diameter' => $this->getDiameter(),
                         'mass' => $this->getMass(),

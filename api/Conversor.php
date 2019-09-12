@@ -98,8 +98,8 @@ class Conversor{
         $launch = (new Launch())
             ->setFlightNumber($data->flight_number)
             ->setDate(new DateTime($data->launch_date_utc))
-            ->setRocket(self::getConteudoRocket($data->rocket->rocket_id))
-            ->setMission(!empty($data->mission_id) ? self::getConteudoMission($data->mission_id[0]) : null)
+            ->setRocket((new Rocket())->setRocketId($data->rocket->rocket_id))
+            ->setMission(!empty($data->mission_id) ? (new Mission())->setMissionId($data->mission_id[0]) : null)
             ->setDescription($data->details)
             ->setImage($data->links->mission_patch_small);
         
