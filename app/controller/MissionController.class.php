@@ -7,6 +7,7 @@
     use core\Redirecionador;
     use app\model\dto\Mission;
     use app\model\dao\MissionDAOMySQL;
+    use app\model\bo\MissionBO;
 
     class MissionController extends AbsController{
        
@@ -32,5 +33,15 @@
             }
             Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
         }
+
+        public function listar(){
+            $missionDAO = new MissionDAOMySQL();
+            $missionBO = new MissionBO($missionDAO);
+
+            $this->view->missions = $missionBO->findAll();
+            
+            $this->requisitarView('mission/listar', 'baseHtml');
+        }
+        
     }
 ?>

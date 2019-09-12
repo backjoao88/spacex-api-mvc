@@ -37,5 +37,10 @@ class LaunchController extends AbsController{
             }            
             Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
         }
+
+        public function listar(){
+
+            $this->requisitarView('launch/listar', 'baseHtml');
+        }
     }
 ?>

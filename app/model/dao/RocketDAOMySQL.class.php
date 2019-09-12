@@ -110,15 +110,15 @@
                 $listaRockets = [];
                 foreach($rockets as $k => $r){
                     $rocket = new Rocket();
-                    $rocket->setId($r['id']);
-                    $rocket->setRocketId($r['rocketId']);
-                    $rocket->setName($r['name']);
-                    $rocket->setDescription($r['description']);
-                    $rocket->setFirstFlight($r['firstFlight']);
-                    $rocket->setHeight($r['height']);
-                    $rocket->setDiameter($r['diameter']);
-                    $rocket->setMass($r['mass']);
-                    $rocket->setImage($r['image']);
+                    $rocket->setId($r['ID']);
+                    $rocket->setRocketId($r['ROCKET_ID']);
+                    $rocket->setName($r['NAME']);
+                    $rocket->setDescription($r['DESCRIPTION']);
+                    $rocket->setFirstFlight($r['FIRST_FLIGHT']);
+                    $rocket->setHeight($r['HEIGHT']);
+                    $rocket->setDiameter($r['DIAMETER']);
+                    $rocket->setMass($r['MASS']);
+                    $rocket->setImage($r['IMAGE']);
                     $listaRockets[] = $rocket;
                 } 
                 return $listaRockets;

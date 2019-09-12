@@ -8,6 +8,7 @@
     use app\model\dto\Rocket;
     use DateTime;
     use app\model\dao\RocketDAOMySQL;
+    use app\model\bo\RocketBO;
 
     class RocketController extends AbsController{
        
@@ -37,6 +38,16 @@
                 $result = $rocketDAOMySQL->insert($rocket);
             }            
             Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
+        }
+
+        public function listar(){
+                        
+            $rocketDAO = new RocketDAOMySQL();
+            $rocketBO = new RocketBO($rocketDAO);
+
+            $this->view->rockets = $rocketBO->findAll();
+            
+            $this->requisitarView('rocket/listar', 'baseHtml');
         }
     }
 

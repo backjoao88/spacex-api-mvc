@@ -14,6 +14,12 @@
     $rota[] = ['/launch/cadastrar', 'LaunchController@cadastrar'];
     $rota[] = ['/launch/inserir', 'LaunchController@inserir'];
 
+    $rota[] = ['/launches', 'LaunchController@listar'];
+    $rota[] = ['/rockets', 'RocketController@listar'];
+    $rota[] = ['/missions', 'MissionController@listar'];
+
+
+
     return $rota;
 
 ?>

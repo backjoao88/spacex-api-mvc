@@ -1,19 +1,4 @@
-#form-edit-produto {
-    margin: 0 auto;
-    border: 1px solid #CCC;
-    padding: 1em;
-    width: 400px;
-}
-
-#edit-produto {
-    margin-top: 10px;
-}
-
-#edit-produto-img {
-    padding-bottom: 20px;
-    text-align: center;
-}
-
 .table {
+    width: 500px;
     margin: 0 auto;
 }

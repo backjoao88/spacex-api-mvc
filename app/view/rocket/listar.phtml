@@ -1,0 +1,43 @@
+
+
+<div class="table-wrapper">
+
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Rockets</h2>
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table table-striped table-hover">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Name</th>
+                <th>First Flight</th>
+                <th>Diameter</th>
+                <th>Mass</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach ($this->view->rockets as $rocket): ?>
+            <tr>
+                <td><?php echo $rocket->getRocketId(); ?></td>
+                <td><?php echo $rocket->getDescription(); ?></td>
+                <td><?php echo $rocket->getName(); ?></td>
+                <td><?php echo $rocket->getFirstFlight(); ?></td>
+                <td><?php echo $rocket->getDiameter(); ?></td>
+                <td><?php echo $rocket->getMass(); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+
+    </table>
+
+</div>
+
