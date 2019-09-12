@@ -23,6 +23,9 @@
         public function delete($rocket){
             return $this->rocketDAO->delete($rocket);
         }
+        public function findOneByRocketID($rocketID){
+            return $this->rocketDAO->findOneByRocketID($rocketID);
+        }
         public function find($rocket){
             return $this->rocketDAO->find($rocket);
         }    

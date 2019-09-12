@@ -5,7 +5,8 @@
     use app\model\dto\Rocket;
     use app\conexao\Conexao;
     use app\model\interfaces\IGenericDB;
-    use PDO;
+use DateTime;
+use PDO;
 
     class RocketDAOMySQL implements IGenericDB{
 
@@ -64,6 +65,37 @@
             }catch (PDOException $e){
                 echo 'Erro ao Excluir -> ' . $e->getMessage();
                 return false;
+            }finally{
+                $pdo = null;
+            }
+        }
+
+        public function findOneByRocketID($rocketID) {
+            try{
+                $pdo = Conexao::conectar();
+                $sql = 'SELECT * FROM ' . self::NOME_TABELA . ' WHERE rocket_id = :id';
+                $stmt = $pdo->prepare($sql);
+    
+                $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+                $id = $rocketID;
+
+                $stmt->execute();
+                $result = [];
+                while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $result[] = (new Rocket())
+                        ->setRocketId($linha['ROCKET_ID'])
+                        ->setName($linha['NAME'])
+                        ->setDescription($linha['DESCRIPTION'])
+                        ->setFirstFlight(new DateTime($linha['FIRST_FLIGHT']))
+                        ->setHeight($linha['HEIGHT'])
+                        ->setDiameter($linha['DIAMETER'])
+                        ->setMass($linha['MASS'])
+                        ->setImage($linha['IMAGE']);
+                }
+
+                return $result;
+            }catch (PDOException $e){
+                echo 'Erro ao Listar -> ' . $e->getMessage();
             }finally{
                 $pdo = null;
             }
