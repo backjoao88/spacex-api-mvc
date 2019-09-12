@@ -2,7 +2,9 @@
 
     namespace app\model\dto;
 
-    class Launch{
+    use JsonSerializable;
+
+    class Launch implements JsonSerializable {
 
         private $id;
         private $flightNumber;
@@ -95,6 +97,19 @@
                 $this->image = $image;
 
                 return $this;
+        }
+
+        public function jsonSerialize()
+        {
+                return [
+                        'id'   => $this->getId(),
+                        'flightnumber' => $this->getFlightNumber(),
+                        'date' => $this->getDate()->format('Y-m-d'),
+                        'objectrocket' => $this->getRocket(),
+                        'objectmission' => $this->getMission(),
+                        'description' => $this->getDescription(),
+                        'image' => $this->getImage()
+                ];
         }
 
         public function __toString() {

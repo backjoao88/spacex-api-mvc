@@ -2,7 +2,9 @@
 
     namespace app\model\dto;
 
-    class Mission{
+    use JsonSerializable;
+
+    class Mission implements JsonSerializable {
 
         private $id;
         private $missionId;
@@ -57,6 +59,16 @@
                 return $this;
         }
 
+        public function jsonSerialize()
+        {
+                return [
+                        'id'   => $this->getId(),
+                        'missionid' => $this->getMissionId(),
+                        'name' => $this->getName(),
+                        'description' => $this->getDescription()
+                ];
+        }
+
         public function __toString() {
                 return "### Mission <<<"
                     . " ID = " . $this->getId()
@@ -65,6 +77,5 @@
                     . " | Description = " . $this->getDescription() . " >>> ";
         }
     }
-
 
 ?>
