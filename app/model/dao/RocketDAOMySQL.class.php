@@ -102,7 +102,31 @@
         }
         
         public function findAll(){
-           
+            try{
+                $pdo = Conexao::conectar();
+                $sql = 'SELECT * FROM ' . self::NOME_TABELA;
+                $query = $pdo->query($sql);
+                $rockets = $query->fetchAll(PDO::FETCH_ASSOC);
+                $listaRockets = [];
+                foreach($rockets as $k => $r){
+                    $rocket = new Rocket();
+                    $rocket->setId($r['id']);
+                    $rocket->setRocketId($r['rocketId']);
+                    $rocket->setName($r['name']);
+                    $rocket->setDescription($r['description']);
+                    $rocket->setFirstFlight($r['firstFlight']);
+                    $rocket->setHeight($r['height']);
+                    $rocket->setDiameter($r['diameter']);
+                    $rocket->setMass($r['mass']);
+                    $rocket->setImage($r['image']);
+                    $listaRockets[] = $rocket;
+                } 
+                return $listaRockets;
+            }catch (PDOException $e){
+                echo 'Erro ao Listar -> ' . $e->getMessage();
+            }finally{
+                $pdo = null;
+            }
         }
         
     }

@@ -85,7 +85,26 @@
         }
         
         public function findAll(){
-           
+            try{
+                $pdo = Conexao::conectar();
+                $sql = 'SELECT * FROM ' . self::NOME_TABELA;
+                $query = $pdo->query($sql);
+                $missions = $query->fetchAll(PDO::FETCH_ASSOC);
+                $listaMissions = [];
+                foreach($missions as $k => $m){
+                    $mission = new Mission();
+                    $mission->setId($m['id']);
+                    $mission->setMissionId($m['missionId']);
+                    $mission->setName($m['name']);
+                    $mission->setDescription($m['description']);
+                    $listaMissions[] = $mission;
+                } 
+                return $listaMissions;
+            }catch (PDOException $e){
+                echo 'Erro ao Listar -> ' . $e->getMessage();
+            }finally{
+                $pdo = null;
+            } 
         }
         
     }
