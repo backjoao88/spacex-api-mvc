@@ -2,7 +2,9 @@
 
     namespace app\model\dto;
 
-    class Rocket{
+    use JsonSerializable;
+
+    class Rocket implements JsonSerializable{
 
         private $id;
         private $rocketId;
@@ -122,13 +124,29 @@
                 return $this;
         }
 
-        public function __toString() {
+        public function jsonSerialize()
+        {
+                return [
+                        'id'   => $this->getId(),
+                        'rocketid' => $this->getRocketID(),
+                        'name' => $this->getName(),
+                        'description' => $this->getDescription(),
+                        'firstflight' => $this->getFirstFlight()->format('Y-m-d'),
+                        'height' => $this->getHeight(),
+                        'diameter' => $this->getDiameter(),
+                        'mass' => $this->getMass(),
+                        'image' => $this->getImage()
+                ];
+        }
+
+        public function __toString()
+        {
                 return "### Rocket <<<"
                     . " ID = " . $this->getId()
                     . " | RocketID = " . $this->getRocketID()
                     . " | Name = " . $this->getName()
                     . " | Description = " . $this->getDescription()
-                    . " | FirtsFlight = " . $this->getFirstFlight()->format('d-m-Y')
+                    . " | FirstFlight = " . $this->getFirstFlight()->format('d-m-Y')
                     . " | Height = " . $this->getHeight()
                     . " | Diameter = " . $this->getDiameter()
                     . " | Mass = " . $this->getMass()

@@ -1,6 +1,6 @@
 <?php
 
-    namespace app\model\interfaces\IGenericDB;
+    namespace app\model\interfaces;
 
     interface IGenericDB{
 

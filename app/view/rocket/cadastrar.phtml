@@ -1,5 +1,34 @@
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+function findRocket() {
+    id = document.getElementById('idToFind').value
+    $.ajax({
+        url:'/rocket/' + id + '/buscar',
+        complete: function (response) {
+            result = response.responseText
+            result = JSON.parse(result)
+
+            document.getElementById('rocketID').value = result['rocketid']
+            document.getElementById('name').value = result['name']
+            document.getElementById('description').value = result['description']
+            document.getElementById('firstFlight').value = result['firstflight']
+            document.getElementById('height').value = result['height']
+            document.getElementById('diameter').value = result['diameter']
+            document.getElementById('mass').value = result['mass']
+            document.getElementById('image').value = result['image']
+        },
+        error: function () {
+            alert('Erro')
+        }
+    })
+
+    return false
+}
+</script>
+
 <?php
 // MENSAGEM DE CADASTRADO
 if (isset($_GET['cadastrado'])) {
@@ -10,9 +39,6 @@ if (isset($_GET['cadastrado'])) {
         $mensagem = "Registro inserido com sucesso";
     }
     ?>
-    <script type="text/javascript">
-        $('#att_Modal').modal('hide')
-    </script>  
     <div class="alert alert-dismissible alert-<?= $status ?>">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <?= $mensagem ?>
@@ -28,10 +54,10 @@ if (isset($_GET['cadastrado'])) {
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="">Rocket ID to find:</label>
-            <input type="number" id="idToFind" class="form-control">
+            <input type="text" id="idToFind" class="form-control">
         </div>
         <div class="form-group col-md-2">
-            <button type="button" class="btn btn-sm btn-success" style="margin-top: 35px;" onClick="buscaDadosAluno();"><i class='fa fa-check-circle'></i> Find Rocket</button>
+            <button type="button" class="btn btn-sm btn-success" style="margin-top: 35px;" onClick="return findRocket();"><i class='fa fa-check-circle'></i> Find Rocket</button>
         </div>
     </div><br>
 
@@ -55,15 +81,15 @@ if (isset($_GET['cadastrado'])) {
             <input type="date" class="form-control" id="firstFlight" name="firstFlight" placeholder="First Flight" readonly>
         </div>
         <div class="form-group col-md-3">
-            <label for="height">Height</label>
+            <label for="height">Height (m)</label>
             <input type="number" class="form-control" id="height" name="height" placeholder="Height" readonly>
         </div>
         <div class="form-group col-md-3">
-            <label for="diameter">Diameter</label>
+            <label for="diameter">Diameter (m)</label>
             <input type="number" class="form-control" id="diameter" name="diameter" placeholder="Diameter" readonly>
         </div>
         <div class="form-group col-md-3">
-            <label for="mass">Mass</label>
+            <label for="mass">Mass (kg)</label>
             <input type="number" class="form-control" id="mass" name="mass" placeholder="Mass" readonly>
         </div>
     </div>

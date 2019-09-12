@@ -9,7 +9,7 @@
 
     class RocketDAOMySQL implements IGenericDB{
 
-        const TABLE_NAME = "ROCKET";
+        const NOME_TABELA = "ROCKET";
 
         public function insert($rocket){
             try {
@@ -33,7 +33,7 @@
                 $rocketId       = $rocket->getRocketId();
                 $name           = $rocket->getName();
                 $description    = $rocket->getDescription();
-                $firstFlight    = $rocket->getFirstFlight();
+                $firstFlight    = $rocket->getFirstFlight()->format('Y-m-d');
                 $height         = $rocket->getHeight();
                 $diameter       = $rocket->getDiameter();
                 $mass           = $rocket->getMass();
