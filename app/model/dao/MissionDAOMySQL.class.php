@@ -93,10 +93,10 @@
                 $listaMissions = [];
                 foreach($missions as $k => $m){
                     $mission = new Mission();
-                    $mission->setId($m['id']);
-                    $mission->setMissionId($m['missionId']);
-                    $mission->setName($m['name']);
-                    $mission->setDescription($m['description']);
+                    $mission->setId($m['ID']);
+                    $mission->setMissionId($m['MISSION_ID']);
+                    $mission->setName($m['NAME']);
+                    $mission->setDescription($m['DESCRIPTION']);
                     $listaMissions[] = $mission;
                 } 
                 return $listaMissions;
