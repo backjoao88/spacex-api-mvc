@@ -1,8 +1,14 @@
 <?php
 
     namespace app\model\dao;
-
+    
     use app\model\dto\Launch;
+    use app\model\dao\MissionDAOMySQL;
+    use app\model\dao\RocketDAOMySQL;
+    use app\model\bo\MissionBO;
+    use app\model\bo\RocketBO;
+    use app\model\dto\Rocket;
+    use app\model\dto\Mission;
     use app\conexao\Conexao;
     use app\model\interfaces\IGenericDB;
     use PDO;
@@ -69,7 +75,37 @@
         }
         
         public function findAll(){
-           
+            try{
+                $pdo = Conexao::conectar();
+                $sql = 'SELECT * FROM ' . self::NOME_TABELA;
+
+                $missionDAO = new MissionDAOMySQL();
+                $missionBO = new MissionBO($missionDAO);
+                $rocketDAO = new RocketDAOMySQL();
+                $rocketBO = new RocketBO($rocketDAO);
+
+                $query = $pdo->query($sql);
+                $launches = $query->fetchAll(PDO::FETCH_ASSOC);
+                $listaLaunches = [];
+                foreach($launches as $k => $l){
+                    $launch = new Launch();
+                    $launch->setId($l['id']);
+                    $launch->setFlightNumber($l['flightNumber']);
+                    $launch->setDate($l['date']);
+                    $mission = $missionBO->find((new Mission())->setId($l['id']));
+                    $rocket  = $rocketBO->find((new Rocket())->setId($l['id']));
+                    $launch->setMission($mission);
+                    $launch->setRocket($rocket);
+                    $launch->setImage($l['image']);
+                    $launch->setDescription($l['description']);
+                    $listaLaunches[] = $launch;
+                } 
+                return $listaLaunches;
+            }catch (PDOException $e){
+                echo 'Erro ao Listar -> ' . $e->getMessage();
+            }finally{
+                $pdo = null;
+            }  
         }
         
     }

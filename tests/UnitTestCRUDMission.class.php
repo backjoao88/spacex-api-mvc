@@ -14,7 +14,7 @@
         public function testInserirMission(){
 
             $missionDAO = new MissionDAOMySQL();
-            $missionBO = new MissionBO($produtoDAO);
+            $missionBO = new MissionBO($missionDAO);
 
             $mission = (new Mission())->setMissionId('1233')
                                     ->setName('MISSION-24')
