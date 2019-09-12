@@ -8,7 +8,7 @@
 
         const DB_TYPE = 'mysql';
         const DB_HOST = 'localhost';
-        const DB_NAME = 'MVC';
+        const DB_NAME = 'LAUNCHES';
         const DB_USER = 'root';
         const DB_PASSWORD = '';
 
