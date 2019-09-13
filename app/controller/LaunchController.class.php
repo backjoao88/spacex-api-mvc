@@ -59,7 +59,7 @@ class LaunchController extends AbsController{
                 $launchDAOMySQL = new LaunchDAOMySQL();
                 $result = $launchDAOMySQL->insert($launch);
             }            
-            // Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
+            Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
             return;
         }
 
