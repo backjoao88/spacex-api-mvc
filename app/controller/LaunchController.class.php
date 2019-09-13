@@ -10,6 +10,8 @@
     use app\model\dto\Launch;
     use core\Redirecionador;
     use app\model\bo\LaunchBO;
+use app\model\bo\MissionBO;
+use app\model\dao\MissionDAOMySQL;
 
 class LaunchController extends AbsController{
        
@@ -27,6 +29,12 @@ class LaunchController extends AbsController{
             var_dump($request);
 
             if (isset($request->post->flightNumber) && $request->post->flightNumber != "") {
+                $launch = (new Launch())
+                    ->setFlightNumber($request->post->flightnumber)
+                    ->setDate(new DateTime($request->post->date))
+                    ->setDescription($request->post->description)
+                    ->setImage($request->post->image);
+
                 // VERIFICAR SE ROCKET E MISSION JÁ FOI INSERIDO
                 if (isset($request->post->rocketID) && $request->post->rocketID != "") {
                     $rocketBO = new RocketBO((new RocketDAOMySQL));
@@ -35,18 +43,18 @@ class LaunchController extends AbsController{
                         Redirecionador::paraARota('cadastrar?cadastrado=' . 2);
                         return;
                     }
+                    $launch->setRocket($resultRocket[0]);
+                }
+                if (isset($request->post->missionID) && $request->post->missionID != "") {
+                    $missionBO = new MissionBO((new MissionDAOMySQL()));
+                    $resultMission = $missionBO->findOneByMissionID($request->post->missionID);
+                    if (!empty($resultMission)) {
+                        $launch->setMission($resultMission[0]);
+                    }
                 }
 
-                // $launch = (new Launch())
-                //     ->setFlightNumber($request->post->flightnumber)
-                //     ->setDate(new DateTime($request->post->date))
-                //     ->setRocket($request->post->objectrocket)
-                //     ->setMission($request->post->objectmission)
-                //     ->setDescription($request->post->description)
-                //     ->setImage($request->post->image);
-            
-                // $launchDAOMySQL = new LaunchDAOMySQL();
-                // $result = $launchDAOMySQL->insert($launch);
+                $launchDAOMySQL = new LaunchDAOMySQL();
+                $result = $launchDAOMySQL->insert($launch);
             }            
             Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
             return;
