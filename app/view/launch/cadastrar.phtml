@@ -42,10 +42,10 @@ if (isset($_GET['cadastrado'])) {
         $mensagem = "Registro inserido com sucesso";
     } else if($_GET['cadastrado'] == 2) {
         $status = "danger";
-        $mensagem = "Falha ao inserir registro. Rocket não cadastrado.";
+        $mensagem = "Falha ao inserir registro. Rocket " . $_GET['a'] . " não cadastrado.";
     } else if($_GET['cadastrado'] == 3) {
         $status = "danger";
-        $mensagem = "Falha ao inserir registro. Mission não cadastrado.";
+        $mensagem = "Falha ao inserir registro. Mission " . $_GET['a'] . " não cadastrado.";
     }
     ?>
     <div class="alert alert-dismissible alert-<?= $status ?>">

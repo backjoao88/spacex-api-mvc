@@ -41,7 +41,7 @@ class LaunchController extends AbsController{
                     $rocketBO = new RocketBO((new RocketDAOMySQL));
                     $resultRocket = $rocketBO->findOneByRocketID($request->post->rocketID);
                     if (empty($resultRocket)) {
-                        Redirecionador::paraARota('cadastrar?cadastrado=' . 2);
+                        Redirecionador::paraARota('cadastrar?cadastrado=' . 2 . '&a=' . $request->post->rocketID);
                         return;
                     }
                     $launch->setRocket($resultRocket[0]);
@@ -50,7 +50,7 @@ class LaunchController extends AbsController{
                     $missionBO = new MissionBO((new MissionDAOMySQL()));
                     $resultMission = $missionBO->findOneByMissionID($request->post->missionID);
                     if (empty($resultMission)) {
-                        Redirecionador::paraARota('cadastrar?cadastrado=' . 3);
+                        Redirecionador::paraARota('cadastrar?cadastrado=' . 3 . '&a=' . $request->post->missionID);
                         return;
                     }
                     $launch->setMission($resultMission[0]);
