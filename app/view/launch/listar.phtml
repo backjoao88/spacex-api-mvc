@@ -17,7 +17,7 @@
 
     <tbody>
     <?php foreach ($this->view->launches as $launch): ?>
-        <tr>
+    <tr onclick="location.href = '/launch/<?php echo $launch->getFlightNumber(); ?>/visualizar';" style="cursor: pointer;">
             <td><?php echo $launch->getId(); ?></td>
             <td><?php echo $launch->getFlightNumber(); ?></td>
             <td><?php echo $launch->getDate(); ?></td>

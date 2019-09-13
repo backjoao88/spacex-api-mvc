@@ -23,6 +23,9 @@
         public function delete($launch){
             return $this->launchDAO->delete($launch);
         }
+        public function findOneByFlightNumber($launch){
+            return $this->launchDAO->findOneByFlightNumber($launch);
+        }
         public function find($launch){
             return $this->launchDAO->find($launch);
         }    

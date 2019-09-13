@@ -1,44 +1,34 @@
 
 
 <div class="container">
-<br><h1>Rocket</h1><br>
+<br><h1>Launch</h1><br>
 
 <div class="form-row">
-    <div class="form-group col-md-6">
-        <label for="rocketID">Rocket ID</label>
-        <input type="text" class="form-control" value="<?= $this->view->rocket->getRocketID() ?>" id="rocketID" name="rocketID" placeholder="Rocket ID" readonly>
+    <div class="form-group col-md-3">
+        <label for="flightNumber">Flight Number</label>
+        <input type="text" class="form-control" value="<?= $this->view->launch->getFlightNumber() ?>" id="flightNumber" name="flightNumber" placeholder="Flight Number" readonly>
     </div>
-    <div class="form-group col-md-6">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" value="<?= $this->view->rocket->getName() ?>" id="name" name="name" placeholder="Name" readonly>
+    <div class="form-group col-md-3">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" value="<?= $this->view->launch->getDate()->format('Y-m-d') ?>" id="date" name="date" placeholder="Date" readonly>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="rocketID">Rocket ID</label>
+        <input type="text" class="form-control" value="<?= 1/*$this->view->launch->getRocket()->getRocketID()*/ ?>" id="rocketID" name="rocketID" placeholder="Rocket ID" readonly>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="missionID">Mission ID</label>
+        <input type="text" class="form-control" value="<?= 1/*$this->view->launch->getMission()->getMissionID()*/ ?>" id="missionID" name="missionID" placeholder="Mission ID" readonly>
     </div>
 </div>
 <div class="form-group">
     <label for="description">Description</label>
-    <textarea style="resize:none" class="form-control" rows="3" id="description" name="description" placeholder="Description" readonly><?= $this->view->rocket->getDescription() ?></textarea>
-</div>
-<div class="form-row">
-    <div class="form-group col-md-3">
-        <label for="firstFlight">First Flight</label>
-        <input type="date" class="form-control" value="<? echo $this->view->rocket->getFirstFlight()->format('Y-m-d') ?>" id="firstFlight" name="firstFlight" placeholder="First Flight" readonly>
-    </div>
-    <div class="form-group col-md-3">
-        <label for="height">Height (m)</label>
-        <input type="number" class="form-control" value="<?= $this->view->rocket->getHeight() ?>" id="height" name="height" placeholder="Height" readonly>
-    </div>
-    <div class="form-group col-md-3">
-        <label for="diameter">Diameter (m)</label>
-        <input type="number" class="form-control" value="<?= $this->view->rocket->getDiameter() ?>" id="diameter" name="diameter" placeholder="Diameter" readonly>
-    </div>
-    <div class="form-group col-md-3">
-        <label for="mass">Mass (kg)</label>
-        <input type="number" class="form-control" value="<?= $this->view->rocket->getMass() ?>" id="mass" name="mass" placeholder="Mass" readonly>
-    </div>
+    <textarea style="resize:none" class="form-control" rows="5" id="description" name="description" placeholder="Description" readonly><?= $this->view->launch->getDescription() ?></textarea>
 </div>
 <div class="form-group">
     <label for="image">Image</label>
-    <input type="text" class="form-control" value="<?= $this->view->rocket->getImage() ?>" id="image" name="image" placeholder="Image" readonly>
+    <input type="text" class="form-control" value="<?= $this->view->launch->getImage() ?>" id="image" name="image" placeholder="Image" readonly>
 </div>
 
-<input type="button" onclick="location.href='/rockets';" class="btn btn-sm btn-success float-right" value="Voltar" />
+<input type="button" onclick="location.href='/launches';" class="btn btn-sm btn-success float-right" value="Voltar" />
 </div><br><br><br><br>

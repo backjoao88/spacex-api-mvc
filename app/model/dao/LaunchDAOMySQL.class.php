@@ -11,7 +11,8 @@
     use app\model\dto\Mission;
     use app\conexao\Conexao;
     use app\model\interfaces\IGenericDB;
-    use PDO;
+use DateTime;
+use PDO;
 
     class LaunchDAOMySQL implements IGenericDB{
 
@@ -68,6 +69,45 @@
             }finally{
                 $pdo = null;
             }
+        }
+
+        public function findOneByFlightNumber($FLIGHT_NUMBER) {
+            try{
+                $missionDAO = new MissionDAOMySQL();
+                $missionBO = new MissionBO($missionDAO);
+                $rocketDAO = new RocketDAOMySQL();
+                $rocketBO = new RocketBO($rocketDAO);
+
+                $pdo = Conexao::conectar();
+                $sql = 'SELECT * FROM ' . self::NOME_TABELA . ' WHERE FLIGHT_NUMBER = :id';
+                $stmt = $pdo->prepare($sql);
+    
+                $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+                $id = $FLIGHT_NUMBER;
+
+                $stmt->execute();
+
+                $launches = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $listaLaunches = [];
+                foreach($launches as $k => $l){
+                    $launch = new Launch();
+                    $launch->setId($l['ID']);
+                    $launch->setFlightNumber($l['FLIGHT_NUMBER']);
+                    $launch->setDate(new DateTime($l['DATE']));
+                    // $mission = $missionBO->find((new Mission())->setId($l['ID']));
+                    // $rocket  = $rocketBO->find((new Rocket())->setId($l['ID']));
+                    // $launch->setMission($mission);
+                    // $launch->setRocket($rocket);
+                    $launch->setImage($l['IMAGE']);
+                    $launch->setDescription($l['DESCRIPTION']);
+                    $listaLaunches[] = $launch;
+                } 
+                return $listaLaunches;
+            }catch (PDOException $e){
+                echo 'Erro ao Listar -> ' . $e->getMessage();
+            }finally{
+                $pdo = null;
+            }  
         }
         
         public function find($launch){

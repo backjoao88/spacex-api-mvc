@@ -71,5 +71,18 @@ class LaunchController extends AbsController{
             
             $this->requisitarView('launch/listar', 'baseHtml');
         }
+
+        public function visualizar($id) {
+            $launchBO = new LaunchBO((new LaunchDAOMySQL));
+            $resultLaunch = $launchBO->findOneByFlightNumber($id);
+
+            if (empty($resultLaunch)) {
+                Redirecionador::paraARota('launch/listar');
+                return;
+            }
+            $this->view->launch = $resultLaunch[0];
+
+            $this->requisitarView('launch/visualizar', 'baseHtml');
+        }
     }
 ?>
