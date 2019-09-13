@@ -4,10 +4,11 @@
 
     use core\AbsController;
     use api\Conversor;
-use app\model\bo\RocketBO;
-use app\model\dao\LaunchDAOMySQL;
-use app\model\dao\RocketDAOMySQL;
-use app\model\dto\Launch;
+    use app\model\bo\RocketBO;
+    use app\model\dao\LaunchDAOMySQL;
+    use app\model\dao\RocketDAOMySQL;
+    use app\model\dto\Launch;
+    use core\Redirecionador;
 
 class LaunchController extends AbsController{
        
@@ -26,12 +27,13 @@ class LaunchController extends AbsController{
 
             if (isset($request->post->flightNumber) && $request->post->flightNumber != "") {
                 // VERIFICAR SE ROCKET E MISSION JÁ FOI INSERIDO
-                // findOneByRocketID
                 if (isset($request->post->rocketID) && $request->post->rocketID != "") {
                     $rocketBO = new RocketBO((new RocketDAOMySQL));
-                    $result = $rocketBO->findOneByRocketID($request->post->rocketID);
-                    echo '<br><br><br><br>result:<br><br>';
-                    echo $result;
+                    $resultRocket = $rocketBO->findOneByRocketID($request->post->rocketID);
+                    if (empty($resultRocket)) {
+                        Redirecionador::paraARota('cadastrar?cadastrado=' . 2);
+                        return;
+                    }
                 }
 
                 // $launch = (new Launch())
@@ -45,7 +47,8 @@ class LaunchController extends AbsController{
                 // $launchDAOMySQL = new LaunchDAOMySQL();
                 // $result = $launchDAOMySQL->insert($launch);
             }            
-            // Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
+            Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
+            return;
         }
 
         public function listar(){

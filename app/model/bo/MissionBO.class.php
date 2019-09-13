@@ -23,6 +23,9 @@
         public function delete($mission){
             return $this->missionDAO->delete($mission);
         }
+        public function findOneByMissionID($missionID){
+            return $this->missionDAO->findOneByMissionID($missionID);
+        }
         public function find($mission){
             return $this->missionDAO->find($mission);
         }    

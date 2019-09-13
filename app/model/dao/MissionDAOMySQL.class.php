@@ -83,6 +83,33 @@
                 $pdo = null;
             }
         }
+
+        public function findOneByMissionID($missionID) {
+            try{
+                $pdo = Conexao::conectar();
+                $sql = 'SELECT * FROM ' . self::NOME_TABELA . ' WHERE mission_id = :id';
+                $stmt = $pdo->prepare($sql);
+    
+                $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+                $id = $missionID;
+
+                $stmt->execute();
+                $result = [];
+                while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $result[]= (new Mission())
+                        ->setId($linha['ID'])
+                        ->setMissionId($linha['MISSION_ID'])
+                        ->setName($linha['NAME'])
+                        ->setDescription($linha['DESCRIPTION']);
+                }
+
+                return $result;
+            }catch (PDOException $e){
+                echo 'Erro ao Listar -> ' . $e->getMessage();
+            }finally{
+                $pdo = null;
+            }
+        }
         
         public function findAll(){
             try{
