@@ -42,6 +42,17 @@
             
             $this->requisitarView('mission/listar', 'baseHtml');
         }
-        
+
+        public function visualizar($id) {
+            $missionBO = new MissionBO((new MissionDAOMySQL));
+            $resultMission = $missionBO->findOneByMissionID($id);
+            if (empty($resultMission)) {
+                Redirecionador::paraARota('mission/listar');
+                return;
+            }
+            $this->view->mission = $resultMission[0];
+
+            $this->requisitarView('mission/visualizar', 'baseHtml');
+        }
     }
 ?>

@@ -16,7 +16,7 @@
 
     <tbody>
     <?php foreach ($this->view->missions as $mission): ?>
-        <tr>
+    <tr onclick="location.href = '/mission/<?php echo $mission->getMissionId(); ?>/visualizar';" style="cursor: pointer;">
             <td><?php echo $mission->getId(); ?></td>
             <td><?php echo $mission->getMissionId(); ?></td>
             <td><?php echo $mission->getName(); ?></td>

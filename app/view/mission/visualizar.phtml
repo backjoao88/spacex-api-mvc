@@ -1,0 +1,22 @@
+
+
+<div class="container">
+<br><h1>Mission</h1><br>
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="missionID">Mission ID</label>
+        <input type="text" class="form-control" value="<?= $this->view->mission->getMissionID() ?>" id="missionID" name="missionID" placeholder="Mission ID" readonly>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" value="<?= $this->view->mission->getName() ?>" id="name" name="name" placeholder="Name" readonly>
+    </div>
+</div>
+<div class="form-group">
+    <label for="description">Description</label>
+    <textarea style="resize:none" class="form-control" rows="5" id="description" name="description" placeholder="Description" readonly><?= $this->view->mission->getDescription() ?></textarea>
+</div>
+
+<input type="button" onclick="location.href='/missions';" class="btn btn-sm btn-success float-right" value="Voltar" />
+</div><br><br><br><br>
