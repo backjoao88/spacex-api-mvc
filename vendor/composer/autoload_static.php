@@ -654,7 +654,7 @@ class ComposerStaticInite8ad25085717a341064cec606b7a08c2
         'app\\model\\dto\\Launch' => __DIR__ . '/../..' . '/app/model/dto/Launch.class.php',
         'app\\model\\dto\\Mission' => __DIR__ . '/../..' . '/app/model/dto/Mission.class.php',
         'app\\model\\dto\\Rocket' => __DIR__ . '/../..' . '/app/model/dto/Rocket.class.php',
-        'app\\model\\interfaces\\IGenericDB\\IGenericDB' => __DIR__ . '/../..' . '/app/model/interfaces/IGenericDB.php',
+        'app\\model\\interfaces\\IGenericDB' => __DIR__ . '/../..' . '/app/model/interfaces/IGenericDB.php',
         'core\\AbsController' => __DIR__ . '/../..' . '/core/AbsController.class.php',
         'core\\ControllerUtil' => __DIR__ . '/../..' . '/core/ControllerUtil.class.php',
         'core\\Redirecionador' => __DIR__ . '/../..' . '/core/Redirecionador.class.php',

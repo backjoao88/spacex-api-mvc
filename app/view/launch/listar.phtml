@@ -23,7 +23,7 @@
             <td><?php echo $launch->getDate(); ?></td>
             <td><?php echo $launch->getRocket()->getRocketId(); ?></td>
             <td><?php echo $launch->getMission()->getMissionId(); ?></td>
-            <td><?php echo $launch->getDescription(); ?></td>
+            <td style="width: 700px;"><?php echo $launch->getDescription(); ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

@@ -575,7 +575,7 @@ return array(
     'app\\model\\dto\\Launch' => $baseDir . '/app/model/dto/Launch.class.php',
     'app\\model\\dto\\Mission' => $baseDir . '/app/model/dto/Mission.class.php',
     'app\\model\\dto\\Rocket' => $baseDir . '/app/model/dto/Rocket.class.php',
-    'app\\model\\interfaces\\IGenericDB\\IGenericDB' => $baseDir . '/app/model/interfaces/IGenericDB.php',
+    'app\\model\\interfaces\\IGenericDB' => $baseDir . '/app/model/interfaces/IGenericDB.php',
     'core\\AbsController' => $baseDir . '/core/AbsController.class.php',
     'core\\ControllerUtil' => $baseDir . '/core/ControllerUtil.class.php',
     'core\\Redirecionador' => $baseDir . '/core/Redirecionador.class.php',

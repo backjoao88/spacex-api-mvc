@@ -17,9 +17,9 @@
 
         <tbody>
         <?php foreach ($this->view->rockets as $rocket): ?>
-            <tr>
+            <tr onclick="location.href = '/rocket/<?php echo $rocket->getRocketId(); ?>/visualizar';" style="cursor: pointer;">
                 <td><?php echo $rocket->getRocketId(); ?></td>
-                <td><?php echo $rocket->getDescription(); ?></td>
+                <td style="width: 700px;"><?php echo $rocket->getDescription(); ?></td>
                 <td><?php echo $rocket->getName(); ?></td>
                 <td><?php echo $rocket->getFirstFlight(); ?></td>
                 <td><?php echo $rocket->getDiameter(); ?></td>

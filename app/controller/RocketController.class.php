@@ -49,6 +49,18 @@
             
             $this->requisitarView('rocket/listar', 'baseHtml');
         }
+
+        public function visualizar($id) {
+            $rocketBO = new RocketBO((new RocketDAOMySQL));
+            $resultRocket = $rocketBO->findOneByRocketID($id);
+            if (empty($resultRocket)) {
+                Redirecionador::paraARota('rocket/listar');
+                return;
+            }
+            $this->view->rocket = $resultRocket[0];
+
+            $this->requisitarView('rocket/visualizar', 'baseHtml');
+        }
     }
 
 ?>

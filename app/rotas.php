@@ -3,6 +3,7 @@
     $rota[] = ['/', 'HomeController@index'];
     
     $rota[] = ['/rocket/{id}/buscar', 'RocketController@buscar'];
+    $rota[] = ['/rocket/{id}/visualizar', 'RocketController@visualizar'];
     $rota[] = ['/rocket/cadastrar', 'RocketController@cadastrar'];
     $rota[] = ['/rocket/inserir', 'RocketController@inserir'];
     
