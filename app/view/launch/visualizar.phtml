@@ -14,11 +14,11 @@
     </div>
     <div class="form-group col-md-3">
         <label for="rocketID">Rocket ID</label>
-        <input type="text" class="form-control" value="<?= 1/*$this->view->launch->getRocket()->getRocketID()*/ ?>" id="rocketID" name="rocketID" placeholder="Rocket ID" readonly>
+        <input type="text" class="form-control" value="<?= $this->view->launch->getRocket()->getRocketID() ?>" id="rocketID" name="rocketID" placeholder="Rocket ID" readonly>
     </div>
     <div class="form-group col-md-3">
         <label for="missionID">Mission ID</label>
-        <input type="text" class="form-control" value="<?= 1/*$this->view->launch->getMission()->getMissionID()*/ ?>" id="missionID" name="missionID" placeholder="Mission ID" readonly>
+        <input type="text" class="form-control" value="<?= $this->view->launch->getMission()->getMissionID() ?>" id="missionID" name="missionID" placeholder="Mission ID" readonly>
     </div>
 </div>
 <div class="form-group">
