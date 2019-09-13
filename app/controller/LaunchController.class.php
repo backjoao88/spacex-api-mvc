@@ -6,6 +6,7 @@
     use api\Conversor;
     use app\model\dao\LaunchDAOMySQL;
     use app\model\dto\Launch;
+    use app\model\bo\LaunchBO;
 
 class LaunchController extends AbsController{
        
@@ -39,7 +40,11 @@ class LaunchController extends AbsController{
         }
 
         public function listar(){
+            $launchDAO = new LaunchDAOMySQL();
+            $launchBO = new LaunchBO($launchDAO);
 
+            $this->view->launches = $launchBO->findAll();
+            
             $this->requisitarView('launch/listar', 'baseHtml');
         }
     }

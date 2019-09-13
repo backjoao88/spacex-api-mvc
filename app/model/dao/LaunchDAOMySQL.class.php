@@ -15,7 +15,7 @@
 
     class LaunchDAOMySQL implements IGenericDB{
 
-        const TABLE_NAME = "LAUNCH";
+        const NOME_TABELA = "LAUNCH";
 
         public function insert($launch){
             try {
@@ -89,15 +89,15 @@
                 $listaLaunches = [];
                 foreach($launches as $k => $l){
                     $launch = new Launch();
-                    $launch->setId($l['id']);
-                    $launch->setFlightNumber($l['flightNumber']);
-                    $launch->setDate($l['date']);
-                    $mission = $missionBO->find((new Mission())->setId($l['id']));
-                    $rocket  = $rocketBO->find((new Rocket())->setId($l['id']));
+                    $launch->setId($l['ID']);
+                    $launch->setFlightNumber($l['FLIGHT_NUMBER']);
+                    $launch->setDate($l['DATE']);
+                    $mission = $missionBO->find((new Mission())->setId($l['ID']));
+                    $rocket  = $rocketBO->find((new Rocket())->setId($l['ID']));
                     $launch->setMission($mission);
                     $launch->setRocket($rocket);
-                    $launch->setImage($l['image']);
-                    $launch->setDescription($l['description']);
+                    $launch->setImage($l['IMAGE']);
+                    $launch->setDescription($l['DESCRIPTION']);
                     $listaLaunches[] = $launch;
                 } 
                 return $listaLaunches;

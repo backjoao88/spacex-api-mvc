@@ -70,9 +70,10 @@
     
                 while ($m = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $mission = new Mission();
-                    $mission->setMissionId($m['missionId']);
-                    $mission->setName($m['name']);
-                    $mission->setDescription($m['description']);
+                    $mission->setId($m['ID']);
+                    $mission->setMissionId($m['MISSION_ID']);
+                    $mission->setName($m['NAME']);
+                    $mission->setDescription($m['DESCRIPTION']);
                 }
     
            
