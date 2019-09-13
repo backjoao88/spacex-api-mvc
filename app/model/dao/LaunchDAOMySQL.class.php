@@ -34,9 +34,9 @@
                 $stmt->bindParam(':image', $image, PDO::PARAM_STR);
                 
                 $flightNumber       = $launch->getFlightNumber();
-                $date               = $launch->getDate();
-                $rocketId           = $launch->getRocketId();
-                $missionId          = $launch->getMissionId();
+                $date               = $launch->getDate()->format('Y-m-d');
+                $rocketId           = $launch->getRocket()->getID();
+                $missionId          = $launch->getMission() != null ? $launch->getMission()->getID() : null;
                 $description        = $launch->getDescription();
                 $image              = $launch->getImage();
 

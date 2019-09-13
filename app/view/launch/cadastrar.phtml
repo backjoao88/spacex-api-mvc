@@ -37,12 +37,15 @@ function findLaunch() {
 if (isset($_GET['cadastrado'])) {
     $status = "danger";
     $mensagem = "Falha ao inserir registro";
-    if ($_GET['cadastrado']) {
+    if ($_GET['cadastrado'] == 1) {
         $status = "success";
         $mensagem = "Registro inserido com sucesso";
-    }else if($_GET['cadastrado'] == 2) {
+    } else if($_GET['cadastrado'] == 2) {
         $status = "danger";
         $mensagem = "Falha ao inserir registro. Rocket não cadastrado.";
+    } else if($_GET['cadastrado'] == 3) {
+        $status = "danger";
+        $mensagem = "Falha ao inserir registro. Mission não cadastrado.";
     }
     ?>
     <div class="alert alert-dismissible alert-<?= $status ?>">

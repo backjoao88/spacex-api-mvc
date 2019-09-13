@@ -10,8 +10,9 @@
     use app\model\dto\Launch;
     use core\Redirecionador;
     use app\model\bo\LaunchBO;
-use app\model\bo\MissionBO;
-use app\model\dao\MissionDAOMySQL;
+    use app\model\bo\MissionBO;
+    use app\model\dao\MissionDAOMySQL;
+    use DateTime;
 
 class LaunchController extends AbsController{
        
@@ -30,7 +31,7 @@ class LaunchController extends AbsController{
 
             if (isset($request->post->flightNumber) && $request->post->flightNumber != "") {
                 $launch = (new Launch())
-                    ->setFlightNumber($request->post->flightnumber)
+                    ->setFlightNumber($request->post->flightNumber)
                     ->setDate(new DateTime($request->post->date))
                     ->setDescription($request->post->description)
                     ->setImage($request->post->image);
@@ -48,15 +49,17 @@ class LaunchController extends AbsController{
                 if (isset($request->post->missionID) && $request->post->missionID != "") {
                     $missionBO = new MissionBO((new MissionDAOMySQL()));
                     $resultMission = $missionBO->findOneByMissionID($request->post->missionID);
-                    if (!empty($resultMission)) {
-                        $launch->setMission($resultMission[0]);
+                    if (empty($resultMission)) {
+                        Redirecionador::paraARota('cadastrar?cadastrado=' . 3);
+                        return;
                     }
+                    $launch->setMission($resultMission[0]);
                 }
 
                 $launchDAOMySQL = new LaunchDAOMySQL();
                 $result = $launchDAOMySQL->insert($launch);
             }            
-            Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
+            // Redirecionador::paraARota('cadastrar?cadastrado=' . $result);
             return;
         }
 

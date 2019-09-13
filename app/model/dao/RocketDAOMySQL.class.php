@@ -83,6 +83,7 @@ use PDO;
                 $result = [];
                 while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $result[] = (new Rocket())
+                        ->setId($linha['ID'])
                         ->setRocketId($linha['ROCKET_ID'])
                         ->setName($linha['NAME'])
                         ->setDescription($linha['DESCRIPTION'])
