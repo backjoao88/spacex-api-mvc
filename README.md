@@ -1,4 +1,6 @@
-# spacex-api-mvc
+# SpaceX API
+
+App that consumes SpaceX API. Made in PHP in a Web Development for a Computer Science degree.
 
 ### API Docs
 docs.spacexdata.com
